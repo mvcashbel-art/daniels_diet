@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daniel's Diet — Plant-Based Menu</title>
+    <!-- Importing a premium, elegant editorial font for the brand name -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,800;1,400&family=Plus+Jakarta+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Modern Reset & Plant-Based Palette Foundations */
+        :root {
+            --card-bg: rgba(22, 31, 27, 0.85); /* Semitransparent dark moss for glassmorphism */
+            --text-main: #f3f5f4; /* Clean crisp stone */
+            --text-muted: #cbdad0; /* Soft, readable sage grey */
+            --accent: #52e595; /* Fresh vibrant sprout green */
+            --messenger-blue: #0084FF; /* Official Messenger Blue */
+            --phone-green: #25D366; /* Vibrant Call/WhatsApp Green */
+            --transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+            color: var(--text-main);
+            -webkit-font-smoothing: antialiased;
+            padding: 40px 24px 140px 24px; /* Added extra bottom padding for the dual button bar */
+            position: relative;
+            min-height: 100vh;
+            background-color: #0b0f0d; /* Fallback dark background */
+        }
+
+        /* Fixed Fullscreen Veggies Background with Dark Blur Overlay */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background-image: linear-gradient(rgba(11, 15, 13, 0.82), rgba(11, 15, 13, 0.88)), 
+                              url('https://images.unsplash.com/photo-1540420773420-3366772f4999?auto=format&fit=crop&q=80&w=1800');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            filter: blur(4px); /* Soft blur keeping it minimal and clean */
+            transform: scale(1.05); /* Prevents white edges from the blur filter */
+        }
+
+        /* Minimal Premium Header Section */
+        header {
+            text-align: center;
+            max-width: 650px;
+            margin: 0 auto 60px auto;
+            background: rgba(11, 15, 13, 0.5);
+            padding: 35px 20px;
+            border-radius: 20px;
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.04);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Beautiful Editorial Brand Typography styling */
+        header h1 {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 3.2rem;
+            font-weight: 800;
+            letter-spacing: -0.01em;
+            line-height: 1.1;
+            margin-bottom: 4px;
+            background: linear-gradient(135deg, #ffffff 40%, #a2ffd0 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 4px 20px rgba(0,0,0,0.15);
+        }
+
+        header .brand-subtitle {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.4em;
+            color: var(--accent);
+            font-weight: 600;
+            margin-bottom: 16px;
+            opacity: 0.9;
+            padding-left: 0.4em;
+        }
+
+        header p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            font-weight: 300;
+            letter-spacing: 0.02em;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            padding-top: 14px;
+            display: inline-block;
+            width: 80%;
+        }
+
+        /* Editorial Menu Grid Layout */
+        .menu-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 32px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .menu-wrapper {
+            position: relative;
+            background: var(--card-bg);
+            border-radius: 16px;
+            overflow: hidden;
+            cursor: pointer;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+            transition: var(--transition);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .menu-wrapper:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.7);
+            border-color: rgba(82, 229, 149, 0.3);
+        }
+
+        .menu-wrapper img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: var(--transition);
+        }
+
+        .menu-wrapper:hover img {
+            transform: scale(1.01);
+            opacity: 0.95;
+        }
+
+        /* PREMIUM DUAL FLOATING ACTION DOCK */
+        .action-dock {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 999;
+            display: flex;
+            gap: 16px;
+            width: auto;
+            max-width: 90%;
+        }
+
+        .dock-btn {
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            padding: 16px 32px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.05rem;
+            letter-spacing: 0.02em;
+            color: #ffffff;
+            white-space: nowrap;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        /* Messenger Button Flavor */
+        .dock-btn.messenger {
+            background: var(--messenger-blue);
+            box-shadow: 0 10px 25px rgba(0, 132, 255, 0.35), inset 0 1px 0 rgba(255,255,255,0.2);
+        }
+
+        .dock-btn.messenger:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 15px 30px rgba(0, 132, 255, 0.5);
+            background: #1a8fff;
+        }
+
+        /* Call Button Flavor */
+        .dock-btn.call {
+            background: var(--phone-green);
+            box-shadow: 0 10px 25px rgba(37, 211, 102, 0.35), inset 0 1px 0 rgba(255,255,255,0.2);
+        }
+
+        .dock-btn.call:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 15px 30px rgba(37, 211, 102, 0.5);
+            background: #34e075;
+        }
+
+        .dock-btn svg {
+            width: 22px;
+            height: 22px;
+            fill: currentColor;
+        }
+
+        /* Premium Fullscreen Lightbox Overlay */
+        .lightbox-overlay {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background-color: rgba(11, 15, 13, 0.96);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .lightbox-overlay.active {
+            display: flex;
+            opacity: 1;
+        }
+
+        .lightbox-content {
+            max-width: 92%;
+            max-height: 90vh;
+            object-fit: contain;
+            border-radius: 8px;
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.7);
+            transform: scale(0.95);
+            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .lightbox-overlay.active .lightbox-content {
+            transform: scale(1);
+        }
+
+        /* Minimal Close Control Button */
+        .close-control {
+            position: absolute;
+            top: 30px;
+            right: 30px;
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            color: var(--text-main);
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .close-control:hover {
+            background: rgba(255, 255, 255, 0.15);
+            border-color: var(--accent);
+            color: var(--accent);
+            transform: rotate(90deg);
+        }
+
+        .close-control svg {
+            width: 20px;
+            height: 20px;
+            fill: none;
+            stroke: currentColor;
+            stroke-width: 2;
+        }
+
+        /* Responsive Optimization Tweaks */
+        @media (max-width: 680px) {
+            body { padding: 24px 16px 130px 16px; }
+            header { margin-bottom: 40px; padding: 25px 15px; }
+            header h1 { font-size: 2.3rem; }
+            header .brand-subtitle { font-size: 0.75rem; letter-spacing: 0.3em; }
+            
+            /* Responsive layout adjustments for the action dock on smaller mobile screens */
+            .action-dock { width: 92%; gap: 10px; bottom: 16px; }
+            .dock-btn { padding: 14px 16px; font-size: 0.9rem; flex: 1; gap: 8px; }
+            .dock-btn svg { width: 18px; height: 18px; }
+            
+            .close-control { top: 20px; right: 20px; width: 40px; height: 40px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Daniel's Diet</h1>
+        <div class="brand-subtitle">Plant-Based Restaurant</div>
+        <p>Select a section below to view detailed menu</p>
+    </header>
+
+    <!-- Photo Grid Section -->
+    <main class="menu-container">
+        <!-- PORTRAIT GRID PAGES -->
+        <div class="menu-wrapper" onclick="launchView(this)">
+            <img src="3c7443bb-2360-4f96-acf1-8fdf607dde8d.jpg" alt="A La Carte Options">
+        </div>
+        <div class="menu-wrapper" onclick="launchView(this)">
+            <img src="e1043a73-30c1-47be-92d2-8da18294aad1.jpg" alt="Rice Meals Selection">
+        </div>
+        <div class="menu-wrapper" onclick="launchView(this)">
+            <img src="bda12dea-1277-4464-9bc7-52c399322f97.jpg" alt="Salad and Soup Selection">
+        </div>
+        <div class="menu-wrapper" onclick="launchView(this)">
+            <img src="25a23437-b6f8-4098-8f78-2bb3827716b2.jpg" alt="Pasta Variety">
+        </div>
+        <div class="menu-wrapper" onclick="launchView(this)">
+            <img src="cd389899-c060-4e96-bad7-7b6cec95cf65.jpg" alt="Pizza and Sandwich Selection">
+        </div>
+        <div class="menu-wrapper" onclick="launchView(this)">
+            <img src="b6bf98fa-b7f4-4572-aa3b-1d16da75764a.jpg" alt="Desserts and Pastries Selection">
+        </div>
+        <div class="menu-wrapper" onclick="launchView(this)">
+            <img src="77ec91bd-ed75-4b88-a92f-ebb821ca0faf.jpg" alt="Beverages and Shakes Menu">
+        </div>
+    </main>
+
+    <!-- FIXED PREMIUM ACTION DOCK (MESSENGER + DIRECT CALL) -->
+    <div class="action-dock">
+        <!-- Messenger Link Button -->
+        <a href="https://m.me/61566157191187" class="dock-btn messenger" target="_blank">
+            <svg viewBox="0 0 24 24">
+                <path d="M12 2C6.36 2 2 6.13 2 11.7c0 2.93 1.19 5.54 3.12 7.33.16.15.26.36.26.58l-.02 1.8c-.02.58.58 1.02 1.13.8l2.03-.82c.19-.08.41-.07.59.02.9.43 1.91.69 2.9.69 5.64 0 10-4.13 10-9.7S17.64 2 12 2zm1.18 12.3l-2.22-2.37-4.33 2.37 4.76-5.06 2.27 2.37 4.28-2.37-4.76 5.06z"/>
+            </svg>
+            Messenger
+        </a>
+
+        <!-- Direct Phone Call Button -->
+        <a href="tel:+639242313350" class="dock-btn call">
+            <svg viewBox="0 0 24 24">
+                <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
+            </svg>
+            Call to Order
+        </a>
+    </div>
+
+    <!-- Ultra-Clean Modal Lightbox -->
+    <div id="viewerLightbox" class="lightbox-overlay" onclick="dismissView()">
+        <button class="close-control" aria-label="Close interactive gallery">
+            <svg viewBox="0 0 24 24"><path d="M18 6L6 18M6 6l12 12"/></svg>
+        </button>
+        <img id="viewerImage" class="lightbox-content" src="" alt="">
+    </div>
+
+    <!-- Interface Logic -->
+    <script>
+        const lightbox = document.getElementById('viewerLightbox');
+        const lightboxImg = document.getElementById('viewerImage');
+
+        function launchView(element) {
+            const imageSource = element.querySelector('img').src;
+            const imageAlt = element.querySelector('img').alt;
+            
+            lightboxImg.src = imageSource;
+            lightboxImg.alt = imageAlt;
+            
+            lightbox.style.display = 'flex';
+            requestAnimationFrame(() => {
+                lightbox.classList.add('active');
+            });
+        }
+
+        function dismissView() {
+            lightbox.classList.remove('active');
+            setTimeout(() => {
+                lightbox.style.display = 'none';
+                lightboxImg.src = '';
+            }, 300);
+        }
+
+        document.addEventListener('keydown', (event) => {
+            if (event.key === 'Escape' && lightbox.classList.contains('active')) {
+                dismissView();
+            }
+        });
+    </script>
+
+</body>
+</html>
