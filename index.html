@@ -92,7 +92,7 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transform: scale(1.28); /* Scales inward to crop out the outer brown paper */
+            transform: scale(1.28);
             display: block;
         }
 
@@ -163,7 +163,7 @@
         /* Editorial Menu Grid Layout */
         .menu-container {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
             gap: 32px;
             max-width: 1400px;
             margin: 0 auto;
@@ -365,7 +365,7 @@
             margin-top: 8px;
         }
 
-        /* Lightbox Overlay */
+        /* Lightbox Modal */
         .lightbox-overlay {
             display: none;
             position: fixed;
@@ -485,58 +485,29 @@
         <p>Select a section below to view detailed menu</p>
     </header>
 
-    <!-- Photo Grid Section -->
+    <!-- Photo Grid Section (3-Page Layout) -->
     <main class="menu-container">
+        <!-- Page 1: Rice Meals & A La Carte -->
         <div class="menu-wrapper" onclick="launchView(this)">
-            <img src="cce5d3b0-22a7-4b5f-840b-003b65269ccb.jpg" alt="A La Carte Options">
+            <img src="93d260f5-0587-475f-bd3f-dbb97636a6a8.jpg" alt="Rice Meals and A La Carte Selection">
             <div class="takeout-notice">
                 <svg viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>
                 Add-on for Takeout Box
             </div>
         </div>
 
+        <!-- Page 2: Salad, Soup & Pasta -->
         <div class="menu-wrapper" onclick="launchView(this)">
-            <img src="1e116dfa-d306-4895-9cf0-bab90970c81c.jpg" alt="Rice Meals Selection">
+            <img src="eb079dac-f01b-49cf-89e1-341bfc089788.jpg" alt="Salad, Soup, and Pasta Selection">
             <div class="takeout-notice">
                 <svg viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>
                 Add-on for Takeout Box
             </div>
         </div>
 
+        <!-- Page 3: Snacks, Desserts & Beverages -->
         <div class="menu-wrapper" onclick="launchView(this)">
-            <img src="53f61042-cff7-40a6-ab76-cd7824220849.jpg" alt="Salad and Soup Selection">
-            <div class="takeout-notice">
-                <svg viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>
-                Add-on for Takeout Box
-            </div>
-        </div>
-
-        <div class="menu-wrapper" onclick="launchView(this)">
-            <img src="2146d9e7-3776-45cc-a81a-00ce41ed6418.jpg" alt="Pasta Variety">
-            <div class="takeout-notice">
-                <svg viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>
-                Add-on for Takeout Box
-            </div>
-        </div>
-
-        <div class="menu-wrapper" onclick="launchView(this)">
-            <img src="588cabfe-c1b7-4b87-a557-1852c3236b0e.jpg" alt="Pizza and Sandwiches">
-            <div class="takeout-notice">
-                <svg viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>
-                Add-on for Takeout Box
-            </div>
-        </div>
-
-        <div class="menu-wrapper" onclick="launchView(this)">
-            <img src="621dc993-130e-4da5-8731-7826ad425791.jpg" alt="Desserts, Pastries, and Snacks">
-            <div class="takeout-notice">
-                <svg viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>
-                Add-on for Takeout Box
-            </div>
-        </div>
-
-        <div class="menu-wrapper" onclick="launchView(this)">
-            <img src="aac20fc9-9d45-456e-a13f-081ef0f68766.jpg" alt="Cold, Hot Drinks, and Shakes">
+            <img src="88f8c963-b5ce-4db0-9b26-831ba38d1ee2.jpg" alt="Snacks, Desserts, and Beverages">
             <div class="takeout-notice">
                 <svg viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>
                 Add-on for Takeout Box
